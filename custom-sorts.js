@@ -98,10 +98,42 @@ function reverseBaseSort(arr) {
   return arr.sort(compBase);
 }
 
+let countFrequency = array => {
+  let obj = {}
+  array.forEach(num => {
+    if (obj[num]){
+      obj[num]++;
+    }
+    else obj[num] = 1;
+  })
+  return obj;
+}
+
+// const arr3 = [-1, 1, -6, 4, 5, -6, 1, 4, 1]
+// console.log(countFrequency(arr3))
+
+
 
 function frequencySort(arr) {
-  // Your code here
+  let obj = countFrequency(arr);
+  
+  function compare5(a, b) {
+    if(obj[a] === obj[b]){
+      return b - a;
+    }
+    if(obj[a] > obj[b]){
+      return 1;
+    }
+    else {
+      return -1;
+    }
+  }
+  return arr.sort(compare5);
 }
+
+
+const arr3 = [-1, 1, -6, 4, 5, -6, 1, 4, 1]
+console.log(frequencySort(arr3))
 
 module.exports = [
   oddEvenSort,
